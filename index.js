@@ -1,20 +1,20 @@
 #!/usr/bin/env node
 
-'use strict';
-const program = require('commander');
-const utils = require('./utils');
+'use strict'
+const program = require('commander')
+const utils = require('./utils')
 
 // Used to get version number from package.json
-require('pkginfo')(module, 'version');
+require('pkginfo')(module, 'version')
 
 // Default values used in documentation and script
-const DEFAULT_WORKSHEET_INDEX = 0;
-const DEFAULT_CLIENT_SECRET_FILENAME = './client_secret.json';
-const DEFAULT_CREDENTIALS_FILENAME = './credentials.json';
-const DEFAULT_RANGE = 'Data!A1:Z10';
-const DEFAULT_LANG_INDEX = 2;
-const DEFAULT_KEY_INDEX = 1;
-const DEFAULT_OUTPUT_DIR = './data';
+const DEFAULT_WORKSHEET_INDEX = 0
+const DEFAULT_CLIENT_SECRET_FILENAME = './client_secret.json'
+const DEFAULT_CREDENTIALS_FILENAME = './credentials.json'
+const DEFAULT_RANGE = 'Data!A1:Z10'
+const DEFAULT_LANG_INDEX = 2
+const DEFAULT_KEY_INDEX = 1
+const DEFAULT_OUTPUT_DIR = './data'
 
 // Parse arguments and generate documentation
 program
@@ -47,20 +47,20 @@ program
 	.option('-k, --key <index>', `index of key column. defaults ${DEFAULT_KEY_INDEX}`)
 	.option('-o, --output <path>', `path of output directory. defaults to ${DEFAULT_OUTPUT_DIR}`)
 	.option('-j, --json', 'generate JSON files instead of JS files')
-	.parse(process.argv);
+	.parse(process.argv)
 
 // Excel parameters
-const WORKSHEET_INDEX = program.worksheet || DEFAULT_WORKSHEET_INDEX;
+const WORKSHEET_INDEX = program.worksheet || DEFAULT_WORKSHEET_INDEX
 
 // Spreadsheet parameters
-const CLIENT_SECRET_FILENAME = program.client || DEFAULT_CLIENT_SECRET_FILENAME;
-const CREDENTIALS_FILENAME = program.token || DEFAULT_CREDENTIALS_FILENAME;
-const RANGE = program.range || DEFAULT_RANGE;
+const CLIENT_SECRET_FILENAME = program.client || DEFAULT_CLIENT_SECRET_FILENAME
+const CREDENTIALS_FILENAME = program.token || DEFAULT_CREDENTIALS_FILENAME
+const RANGE = program.range || DEFAULT_RANGE
 
 // Common parameters
-const LANG_INDEX = program.lang || DEFAULT_LANG_INDEX;
-const KEY_INDEX = program.key || DEFAULT_KEY_INDEX;
-const OUTPUT_DIR = program.output || DEFAULT_OUTPUT_DIR;
+const LANG_INDEX = program.lang || DEFAULT_LANG_INDEX
+const KEY_INDEX = program.key || DEFAULT_KEY_INDEX
+const OUTPUT_DIR = program.output || DEFAULT_OUTPUT_DIR
 
 // Run script
 if (program.file) {
@@ -71,7 +71,7 @@ if (program.file) {
 		KEY_INDEX,
 		OUTPUT_DIR,
 		program.json
-	);
+	)
 } else if (program.spreadsheet) {
 	utils.generateFilesFromSpreadsheet(
 		program.spreadsheet,
@@ -82,7 +82,7 @@ if (program.file) {
 		KEY_INDEX,
 		OUTPUT_DIR,
 		program.json
-	);
+	)
 } else {
-	console.error('--file or --spreadsheet is required');
+	console.error('--file or --spreadsheet is required')
 }
