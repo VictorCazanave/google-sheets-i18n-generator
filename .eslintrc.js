@@ -9,6 +9,7 @@ module.exports = {
 		'no-console': 'off',
 		'indent': ['error', 'tab'],
     'no-tabs': 'off',
-    'comma-dangle': ['error', 'always-multiline'],
+		'semi': ["error", "never"],
+		'comma-dangle': ['error', 'always-multiline'],
 	}
 }
