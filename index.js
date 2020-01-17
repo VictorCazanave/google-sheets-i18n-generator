@@ -1,8 +1,9 @@
 #!/usr/bin/env node
 
 'use strict'
+
 const program = require('commander')
-const utils = require('./utils')
+const { generateFilesFromSpreadsheet } = require('./lib')
 
 // Used to get version number from package.json
 require('pkginfo')(module, 'version')
@@ -49,9 +50,6 @@ program
 	.option('-j, --json', 'generate JSON files instead of JS files')
 	.parse(process.argv)
 
-// Excel parameters
-const WORKSHEET_INDEX = program.worksheet || DEFAULT_WORKSHEET_INDEX
-
 // Spreadsheet parameters
 const CLIENT_SECRET_FILENAME = program.client || DEFAULT_CLIENT_SECRET_FILENAME
 const CREDENTIALS_FILENAME = program.token || DEFAULT_CREDENTIALS_FILENAME
@@ -63,17 +61,8 @@ const KEY_INDEX = program.key || DEFAULT_KEY_INDEX
 const OUTPUT_DIR = program.output || DEFAULT_OUTPUT_DIR
 
 // Run script
-if (program.file) {
-	utils.generateFilesFromExcel(
-		program.file,
-		WORKSHEET_INDEX,
-		LANG_INDEX,
-		KEY_INDEX,
-		OUTPUT_DIR,
-		program.json
-	)
-} else if (program.spreadsheet) {
-	utils.generateFilesFromSpreadsheet(
+if (program.spreadsheet) {
+	generateFilesFromSpreadsheet(
 		program.spreadsheet,
 		RANGE,
 		CLIENT_SECRET_FILENAME,
