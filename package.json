@@ -1,0 +1,39 @@
+{
+	"name": "google-sheets-i18n",
+	"version": "1.0.0-beta.1",
+	"description": "Generate i18n JSON/JS files from a Google Sheets spreadsheet",
+	"main": "index.js",
+	"bin": {
+		"gs-i18n": "./index.js"
+	},
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/VictorCazanave/google-sheets-i18n.git"
+	},
+	"keywords": [
+		"google",
+		"sheets",
+		"spreadsheet",
+		"i18n",
+		"json",
+		"js"
+	],
+	"author": "Victor Cazanave <victor.cazanave@gmail.com>",
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/VictorCazanave/google-sheets-i18n/issues"
+	},
+	"homepage": "https://github.com/VictorCazanave/google-sheets-i18n#readme",
+	"dependencies": {
+		"commander": "^4.1.0",
+		"dot-object": "^2.1.2",
+		"googleapis": "^47.0.0",
+		"pkginfo": "^0.4.1"
+	},
+	"devDependencies": {
+		"eslint": "^6.8.0"
+	}
+}
