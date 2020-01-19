@@ -1,4 +1,4 @@
-# google-sheets-i18n
+# google-sheets-i18n-generator
 
 Generate i18n JSON/JS files from a Google Sheets spreadsheet
 
