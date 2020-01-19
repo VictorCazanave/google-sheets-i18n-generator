@@ -9,69 +9,63 @@ const { generateFilesFromSpreadsheet } = require('./lib')
 require('pkginfo')(module, 'version')
 
 // Default values used in documentation and script
-const DEFAULT_WORKSHEET_INDEX = 0
-const DEFAULT_CLIENT_SECRET_FILENAME = './client_secret.json'
-const DEFAULT_CREDENTIALS_FILENAME = './credentials.json'
-const DEFAULT_RANGE = 'Data!A1:Z10'
-const DEFAULT_LANG_INDEX = 2
-const DEFAULT_KEY_INDEX = 1
-const DEFAULT_OUTPUT_DIR = './data'
+const DEFAULT_CLIENT = './client_secret.json'
+const DEFAULT_FORMAT = 'json'
+const DEFAULT_KEY_INDEX = 0
+const DEFAULT_LANG_INDEX = 1
+const DEFAULT_OUTPUT_DIR = './locales'
+const DEFAULT_RANGE = 'Sheet1'
+const DEFAULT_TOKEN = './credentials.json'
 
-// Parse arguments and generate documentation
+// Generate documentation and parse arguments
 program
 	.version(module.exports.version, '-v, --version')
 	.option(
-		'-f, --file <path>',
-		`path of file to parse (only with Excel file). required if no --spreadsheet`
-	)
-	.option(
-		'-w, --worksheet <index>',
-		`index of worksheet to parse (only with Excel file). defaults ${DEFAULT_WORKSHEET_INDEX}`
-	)
-	.option(
 		'-c, --client <path>',
-		`path of client secret file (only with Google Spreadsheet). defaults to ${DEFAULT_CLIENT_SECRET_FILENAME}`
+		`path of client secret file (defaults to ${DEFAULT_CLIENT})`
 	)
 	.option(
-		'-t, --token <path>',
-		`path of credentials file (only with Google Spreadsheet). defaults to ${DEFAULT_CREDENTIALS_FILENAME}`
+		'-f, --format <format>',
+		`format of generated files (available values are cjs, esm and json, defaults ${DEFAULT_FORMAT})`
 	)
 	.option(
-		'-s, --spreadsheet <id>',
-		'id of spreadsheet to parse (only with Google Spreadsheet). required if no --file'
+		'-k, --key <index>',
+		`index of key column (defaults ${DEFAULT_KEY_INDEX})`
+	)
+	.option(
+		'-l, --lang <index>',
+		`index of first language column (defaults ${DEFAULT_LANG_INDEX})`
+	)
+	.option(
+		'-o, --output <path>',
+		`path of output directory (defaults to ${DEFAULT_OUTPUT_DIR})`
 	)
 	.option(
 		'-r, --range <range>',
-		`range of data to parse (only with Google Spreadsheet). defaults ${DEFAULT_RANGE}`
+		`range of data to parse (defaults ${DEFAULT_RANGE})`
 	)
-	.option('-l, --lang <index>', `index of first translation column. defaults ${DEFAULT_LANG_INDEX}`)
-	.option('-k, --key <index>', `index of key column. defaults ${DEFAULT_KEY_INDEX}`)
-	.option('-o, --output <path>', `path of output directory. defaults to ${DEFAULT_OUTPUT_DIR}`)
-	.option('-j, --json', 'generate JSON files instead of JS files')
+	.option(
+		'-s, --spreadsheet <id>',
+		'id of spreadsheet to parse (required)'
+	)
+	.option(
+		'-t, --token <path>',
+		`path of credentials file (defaults to ${DEFAULT_TOKEN})`
+	)
 	.parse(process.argv)
-
-// Spreadsheet parameters
-const CLIENT_SECRET_FILENAME = program.client || DEFAULT_CLIENT_SECRET_FILENAME
-const CREDENTIALS_FILENAME = program.token || DEFAULT_CREDENTIALS_FILENAME
-const RANGE = program.range || DEFAULT_RANGE
-
-// Common parameters
-const LANG_INDEX = program.lang || DEFAULT_LANG_INDEX
-const KEY_INDEX = program.key || DEFAULT_KEY_INDEX
-const OUTPUT_DIR = program.output || DEFAULT_OUTPUT_DIR
 
 // Run script
 if (program.spreadsheet) {
 	generateFilesFromSpreadsheet(
+		program.client || DEFAULT_CLIENT,
+		program.token || DEFAULT_TOKEN,
 		program.spreadsheet,
-		RANGE,
-		CLIENT_SECRET_FILENAME,
-		CREDENTIALS_FILENAME,
-		LANG_INDEX,
-		KEY_INDEX,
-		OUTPUT_DIR,
-		program.json
+		program.range || DEFAULT_RANGE,
+		program.key || DEFAULT_KEY_INDEX,
+		program.lang || DEFAULT_LANG_INDEX,
+		program.output || DEFAULT_OUTPUT_DIR,
+		program.format || DEFAULT_FORMAT
 	)
 } else {
-	console.error('--file or --spreadsheet is required')
+	console.error('--spreadsheet is required')
 }
