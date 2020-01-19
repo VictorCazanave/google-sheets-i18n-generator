@@ -8,7 +8,7 @@ module.exports = {
 	rules: {
 		'no-console': 'off',
 		'indent': ['error', 'tab'],
-    'no-tabs': 'off',
+		'no-tabs': 'off',
 		'semi': ["error", "never"],
 		'comma-dangle': ['error', 'always-multiline'],
 	}
