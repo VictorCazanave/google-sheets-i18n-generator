@@ -19,6 +19,8 @@ const DEFAULT_TOKEN = './credentials.json'
 
 // Generate documentation and parse arguments
 program
+	.name("gs-i18n")
+	.usage('--spreadsheet <id> [options]')
 	.version(module.exports.version, '-v, --version')
 	.option(
 		'-c, --client <path>',
