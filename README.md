@@ -1,6 +1,8 @@
 # google-sheets-i18n-generator
 
 [![npm version](https://badge.fury.io/js/google-sheets-i18n-generator.svg)](https://badge.fury.io/js/google-sheets-i18n-generator)
+[![Build Status](https://travis-ci.com/VictorCazanave/google-sheets-i18n-generator.svg?branch=master)](https://travis-ci.com/VictorCazanave/google-sheets-i18n-generator)
+[![codecov](https://codecov.io/gh/VictorCazanave/google-sheets-i18n-generator/branch/master/graph/badge.svg)](https://codecov.io/gh/VictorCazanave/google-sheets-i18n-generator)
 [![Dependency Status](https://david-dm.org/VictorCazanave/google-sheets-i18n-generator.svg)](https://david-dm.org/VictorCazanave/google-sheets-i18n-generator)
 
 Generate i18n JSON/JS files from a Google Sheets spreadsheet
@@ -45,5 +47,3 @@ Options:
 ## TODO
 
 * Improve documentation
-* Create unit tests
-* Improve code
