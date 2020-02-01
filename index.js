@@ -24,50 +24,46 @@ program
 	.version(module.exports.version, '-v, --version')
 	.option(
 		'-c, --client <path>',
-		`path of client secret file (defaults to ${DEFAULT_CLIENT})`
+		`path of client secret file (defaults to ${DEFAULT_CLIENT})`,
 	)
 	.option(
 		'-f, --format <format>',
-		`format of generated files (available values are cjs, esm and json, defaults ${DEFAULT_FORMAT})`
+		`format of generated files (available values are cjs, esm and json, defaults ${DEFAULT_FORMAT})`,
 	)
 	.option(
 		'-k, --key <index>',
-		`index of key column (defaults ${DEFAULT_KEY_INDEX})`
+		`index of key column (defaults ${DEFAULT_KEY_INDEX})`,
 	)
 	.option(
 		'-l, --lang <index>',
-		`index of first language column (defaults ${DEFAULT_LANG_INDEX})`
+		`index of first language column (defaults ${DEFAULT_LANG_INDEX})`,
 	)
 	.option(
 		'-o, --output <path>',
-		`path of output directory (defaults to ${DEFAULT_OUTPUT_DIR})`
+		`path of output directory (defaults to ${DEFAULT_OUTPUT_DIR})`,
 	)
 	.option(
 		'-r, --range <range>',
-		`range of data to parse (defaults ${DEFAULT_RANGE})`
+		`range of data to parse (defaults ${DEFAULT_RANGE})`,
 	)
 	.option(
 		'-s, --spreadsheet <id>',
-		'id of spreadsheet to parse (required)'
+		'id of spreadsheet to parse (required)',
 	)
 	.option(
 		'-t, --token <path>',
-		`path of credentials file (defaults to ${DEFAULT_TOKEN})`
+		`path of credentials file (defaults to ${DEFAULT_TOKEN})`,
 	)
 	.parse(process.argv)
 
 // Run script
-if (program.spreadsheet) {
-	generateFilesFromSpreadsheet(
-		program.client || DEFAULT_CLIENT,
-		program.token || DEFAULT_TOKEN,
-		program.spreadsheet,
-		program.range || DEFAULT_RANGE,
-		program.key || DEFAULT_KEY_INDEX,
-		program.lang || DEFAULT_LANG_INDEX,
-		program.output || DEFAULT_OUTPUT_DIR,
-		program.format || DEFAULT_FORMAT
-	)
-} else {
-	console.error('--spreadsheet is required')
-}
+generateFilesFromSpreadsheet(
+	program.client || DEFAULT_CLIENT,
+	program.token || DEFAULT_TOKEN,
+	program.spreadsheet,
+	program.range || DEFAULT_RANGE,
+	program.key || DEFAULT_KEY_INDEX,
+	program.lang || DEFAULT_LANG_INDEX,
+	program.output || DEFAULT_OUTPUT_DIR,
+	program.format || DEFAULT_FORMAT,
+)
