@@ -68,14 +68,14 @@ Usage: gs-i18n --spreadsheet <id> [options]
 
 Options:
   -v, --version           output the version number
-  -c, --client <path>     path of client secret file (defaults to ./client_secret.json)
-  -f, --format <format>   format of generated files (available values are cjs, esm and json, defaults json)
-  -k, --key <index>       index of key column (defaults 0)
-  -l, --lang <index>      index of first language column (defaults 1)
-  -o, --output <path>     path of output directory (defaults to ./locales)
-  -r, --range <range>     range of data to parse (defaults Sheet1)
+  -c, --client <path>     path of client secret file (default: ./client_secret.json)
+  -f, --format <format>   format of generated files (available values are cjs, esm and json, default: json)
+  -k, --key <index>       index of key column (default: 0)
+  -l, --lang <index>      index of first language column (default: 1)
+  -o, --output <path>     path of output directory (default: ./locales)
+  -r, --range <range>     range of data to parse (default: Sheet1)
   -s, --spreadsheet <id>  id of spreadsheet to parse (required)
-  -t, --token <path>      path of credentials file (defaults to ./credentials.json)
+  -t, --token <path>      path of credentials file (default: ./credentials.json)
   -h, --help              output usage information
 ```
 
