@@ -24,27 +24,27 @@ program
 	.version(module.exports.version, '-v, --version')
 	.option(
 		'-c, --client <path>',
-		`path of client secret file (defaults to ${DEFAULT_CLIENT})`,
+		`path of client secret file (default: ${DEFAULT_CLIENT})`,
 	)
 	.option(
 		'-f, --format <format>',
-		`format of generated files (available values are cjs, esm and json, defaults ${DEFAULT_FORMAT})`,
+		`format of generated files (available values are cjs, esm and json, default: ${DEFAULT_FORMAT})`,
 	)
 	.option(
 		'-k, --key <index>',
-		`index of key column (defaults ${DEFAULT_KEY_INDEX})`,
+		`index of key column (default: ${DEFAULT_KEY_INDEX})`,
 	)
 	.option(
 		'-l, --lang <index>',
-		`index of first language column (defaults ${DEFAULT_LANG_INDEX})`,
+		`index of first language column (default: ${DEFAULT_LANG_INDEX})`,
 	)
 	.option(
 		'-o, --output <path>',
-		`path of output directory (defaults to ${DEFAULT_OUTPUT_DIR})`,
+		`path of output directory (default: ${DEFAULT_OUTPUT_DIR})`,
 	)
 	.option(
 		'-r, --range <range>',
-		`range of data to parse (defaults ${DEFAULT_RANGE})`,
+		`range of data to parse (default: ${DEFAULT_RANGE})`,
 	)
 	.option(
 		'-s, --spreadsheet <id>',
@@ -52,7 +52,7 @@ program
 	)
 	.option(
 		'-t, --token <path>',
-		`path of credentials file (defaults to ${DEFAULT_TOKEN})`,
+		`path of credentials file (default: ${DEFAULT_TOKEN})`,
 	)
 	.parse(process.argv)
 
