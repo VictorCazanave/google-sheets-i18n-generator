@@ -1,6 +1,6 @@
 {
 	"name": "google-sheets-i18n-generator",
-	"version": "1.0.0-beta.2",
+	"version": "1.0.0-beta.3",
 	"description": "Generate i18n JSON/JS files from a Google Sheets spreadsheet",
 	"main": "index.js",
 	"bin": {
