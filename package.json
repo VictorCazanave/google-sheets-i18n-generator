@@ -19,12 +19,12 @@
 		"url": "git+https://github.com/VictorCazanave/google-sheets-i18n-generator.git"
 	},
 	"keywords": [
-		"google",
-		"sheets",
+		"google sheets",
 		"spreadsheet",
 		"i18n",
-		"json",
-		"js"
+		"commonjs",
+		"es modules",
+		"json"
 	],
 	"author": "Victor Cazanave <victor.cazanave@gmail.com>",
 	"license": "MIT",
