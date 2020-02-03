@@ -43,7 +43,7 @@ Generate i18n JSON/JS files from a Google Sheets spreadsheet
 
 3. Copy the ID of the spreadsheet (e.g. in this URL `https://docs.google.com/spreadsheets/d/1kjNb2-Tpn_1Pcd6pid22fBQlr8nd6oa1ltXwKNj1Gz11/edit#gid=0` the ID is `1kjNb2-Tpn_1Pcd6pid22fBQlr8nd6oa1ltXwKNj1Gz11`)
 
-4. Run the command: `gs-i18n --spreadsheet <ID>`
+4. Run the command: `gs-i18n <spreadsheetId>`
 
 5. If needed, follow the instructions to allow `gs-i18n` to access your Google Sheets and download the `credentials.json` files (only the first time)
    <details>
@@ -64,22 +64,21 @@ To customize the options, see the [API section](#api).
 ## API
 
 ```
-Usage: gs-i18n --spreadsheet <id> [options]
+Usage: gs-i18n <spreadsheetId> [options]
 
 Options:
-  -v, --version           output the version number
-  -c, --client <path>     path of client secret file (default: ./client_secret.json)
-  -f, --format <format>   format of generated files (available values are cjs, esm and json, default: json)
-  -k, --key <index>       index of key column (default: 0)
-  -l, --lang <index>      index of first language column (default: 1)
-  -o, --output <path>     path of output directory (default: ./locales)
-  -r, --range <range>     range of data to parse (default: Sheet1)
-  -s, --spreadsheet <id>  id of spreadsheet to parse (required)
-  -t, --token <path>      path of credentials file (default: ./credentials.json)
-  -h, --help              output usage information
+  -v, --version            output the version number
+  -b, --beautify <number>  number of spaces to insert white space in JSON/JS files (min: 0, max: 10) (default: 0)
+  -c, --client <path>      path of client secret file (default: "./client_secret.json")
+  -f, --format <format>    format of generated files (available values: "cjs", "esm", "json") (default: "json")
+  -k, --key <index>        index of key column (default: 0)
+  -l, --lang <index>       index of first language column (default: 1)
+  -o, --output <path>      path of output directory (default: "./locales")
+  -r, --range <range>      range of data to parse (default: "Sheet1")
+  -t, --token <path>       path of credentials file (default: "./credentials.json")
+  -h, --help               output usage information
 ```
 
 ## TODO
 
 * Improve code coverage
-* Improve API
