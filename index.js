@@ -9,6 +9,7 @@ const { generateFilesFromSpreadsheet } = require('./lib')
 require('pkginfo')(module, 'version')
 
 // Default values used in documentation and script
+const DEFAULT_BEAUTIFY = 0
 const DEFAULT_CLIENT = './client_secret.json'
 const DEFAULT_FORMAT = 'json'
 const DEFAULT_KEY_INDEX = 0
@@ -22,6 +23,11 @@ program
 	.name("gs-i18n")
 	.usage('--spreadsheet <id> [options]')
 	.version(module.exports.version, '-v, --version')
+	.option(
+		'-b, --beautify <number>', // TODO: Allow string to handle tabs?
+		`number of spaces to insert white space in JSON/JS files (min: 0, max: 10, default: 0)`,
+		parseInt,
+	)
 	.option(
 		'-c, --client <path>',
 		`path of client secret file (default: ${DEFAULT_CLIENT})`,
@@ -66,4 +72,5 @@ generateFilesFromSpreadsheet(
 	program.lang || DEFAULT_LANG_INDEX,
 	program.output || DEFAULT_OUTPUT_DIR,
 	program.format || DEFAULT_FORMAT,
+	program.beautify || DEFAULT_BEAUTIFY,
 )
