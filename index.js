@@ -21,8 +21,9 @@ const DEFAULT_TOKEN = './credentials.json'
 // Generate documentation and parse arguments
 program
 	.name("gs-i18n")
-	.usage('--spreadsheet <id> [options]')
+	.usage('<spreadsheetId> [options]')
 	.version(module.exports.version, '-v, --version')
+	.arguments('<spreadsheetId>')
 	.option(
 		'-b, --beautify <number>', // TODO: Allow string to handle tabs?
 		'number of spaces to insert white space in JSON/JS files (min: 0, max: 10)',
@@ -60,10 +61,6 @@ program
 		DEFAULT_RANGE,
 	)
 	.option(
-		'-s, --spreadsheet <id>',
-		'id of spreadsheet to parse (required)',
-	)
-	.option(
 		'-t, --token <path>',
 		'path of credentials file',
 		DEFAULT_TOKEN,
@@ -72,9 +69,9 @@ program
 
 // Run script
 generateFilesFromSpreadsheet(
+	program.args[0], // spreadsheetId
 	program.client,
 	program.token,
-	program.spreadsheet,
 	program.range,
 	program.key,
 	program.lang,

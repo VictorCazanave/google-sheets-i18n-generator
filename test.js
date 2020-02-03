@@ -6,9 +6,9 @@ const { google } = require('googleapis')
 const { generateFilesFromSpreadsheet } = require('./lib')
 
 // Arguments of generateFilesFromSpreadsheet
+const spreadsheetId = 'spreadsheetId'
 const clientSecretFile = 'client_secret.json'
 const credentialsFile = 'credentials.json'
-const spreadsheetId = 'spreadsheetId'
 const range = 'range'
 const keyIndex = 0
 const langIndex = 1
@@ -84,9 +84,9 @@ test.serial('displays error when client secret file does not exist', async t => 
 	mockFs({})
 
 	await generateFilesFromSpreadsheet(
+		spreadsheetId,
 		clientSecretFile,
 		credentialsFile,
-		spreadsheetId,
 		range,
 	)
 
@@ -106,9 +106,9 @@ test.serial('displays error when spreadsheet is not accessible', async t => {
 	})
 
 	await generateFilesFromSpreadsheet(
+		spreadsheetId,
 		clientSecretFile,
 		credentialsFile,
-		spreadsheetId,
 		range,
 	)
 
@@ -132,9 +132,9 @@ test.serial('displays error when spreadsheet is empty', async t => {
 	})
 
 	await generateFilesFromSpreadsheet(
+		spreadsheetId,
 		clientSecretFile,
 		credentialsFile,
-		spreadsheetId,
 		range,
 	)
 
@@ -160,9 +160,9 @@ test.serial('displays error when output directory cannot be created', async t =>
 	mkdirSync.throws(new Error('mocked error'))
 
 	await generateFilesFromSpreadsheet(
+		spreadsheetId,
 		clientSecretFile,
 		credentialsFile,
-		spreadsheetId,
 		range,
 		keyIndex,
 		langIndex,
@@ -201,9 +201,9 @@ test.serial('displays error when a file cannot be created', async t => {
 	writeFileSync.throws(new Error('mocked error'))
 
 	await generateFilesFromSpreadsheet(
+		spreadsheetId,
 		clientSecretFile,
 		credentialsFile,
-		spreadsheetId,
 		range,
 		keyIndex,
 		langIndex,
