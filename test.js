@@ -15,10 +15,12 @@ const langIndex = 1
 const outputDir = 'output'
 const format = 'json'
 
-// Spy on console.error to test error message
+// Spy on console.error and console.info to test error and info messages
 // TODO: Use stub to avoid logs in terminal when running tests?
 const consoleError = sinon.spy(console, 'error')
 const consoleErrorMessage = () => consoleError.firstCall.args[0]
+const consoleInfo = sinon.spy(console, 'info')
+const consoleInfoMessage = () => consoleInfo.firstCall.args[0]
 
 // Stub external libraries to test use cases
 const googleSheets = sinon.stub(google, 'sheets')
@@ -70,14 +72,10 @@ test.afterEach(() => {
 
 // Must use serial to avoid to mess up stubs
 // https://stackoverflow.com/a/37900956/9826498
-// TODO: Add tests when no error
 test.serial('displays error when spreadsheet ID is not provided', async t => {
 	await generateFilesFromSpreadsheet()
 
-	t.is(
-		consoleErrorMessage(),
-		'Spreadsheet ID is required',
-	)
+	t.is(consoleErrorMessage(), 'Spreadsheet ID is required')
 })
 
 test.serial('displays error when client secret file does not exist', async t => {
@@ -138,10 +136,7 @@ test.serial('displays error when spreadsheet is empty', async t => {
 		range,
 	)
 
-	t.is(
-		consoleErrorMessage(),
-		'No data found in spreadsheet',
-	)
+	t.is(consoleErrorMessage(), 'No data found in spreadsheet')
 })
 
 test.serial('displays error when output directory cannot be created', async t => {
@@ -170,10 +165,7 @@ test.serial('displays error when output directory cannot be created', async t =>
 		format,
 	)
 
-	t.is(
-		consoleErrorMessage(),
-		'Error creating directory output:\n\tError: mocked error',
-	)
+	t.is(consoleErrorMessage(), 'Error creating directory output:\n\tError: mocked error')
 })
 
 test.serial('displays error when a file cannot be created', async t => {
@@ -215,5 +207,78 @@ test.serial('displays error when a file cannot be created', async t => {
 		consoleErrorMessage(),
 		'Error writing file output/en.json:\n\tError: mocked error',
 	)
+})
+
+test.serial('creates output directory when it does not exist', async t => {
+	mockFiles()
+	mockGoogleAuth()
+	mockSpreadsheetValues({
+		get() {
+			return {
+				data: {
+					values: [[]],
+				},
+			}
+		},
+	})
+	existsSync.returns(false)
+	mkdirSync.returns()
+
+	await generateFilesFromSpreadsheet(
+		spreadsheetId,
+		clientSecretFile,
+		credentialsFile,
+		range,
+		keyIndex,
+		langIndex,
+		outputDir,
+		format,
+	)
+
+	t.is(mkdirSync.firstCall.args[0], outputDir)
+	t.is(consoleInfo.lastCall.args[0], 'output has been created')
+})
+
+test.serial('creates file for each language', async t => {
+	mockFiles()
+	mockGoogleAuth()
+	mockSpreadsheetValues({
+		get() {
+			return {
+				data: {
+					values: [
+						[
+							'key',
+							'en',
+							'fr',
+						],
+						[
+							'yes',
+							'Yes',
+							'Oui',
+						],
+					],
+				},
+			}
+		},
+	})
+	existsSync.returns(true)
+	writeFileSync.returns()
+
+	await generateFilesFromSpreadsheet(
+		spreadsheetId,
+		clientSecretFile,
+		credentialsFile,
+		range,
+		keyIndex,
+		langIndex,
+		outputDir,
+		format,
+	)
+
+	t.is(writeFileSync.firstCall.args[0], 'output/en.json')
+	t.is(consoleInfoMessage(), 'output/en.json has been created')
+	t.is(writeFileSync.secondCall.args[0], 'output/fr.json')
+	t.is(consoleInfo.secondCall.args[0], 'output/fr.json has been created')
 })
 
