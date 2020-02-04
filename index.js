@@ -27,8 +27,8 @@ program
 	.option(
 		'-b, --beautify <number>', // TODO: Allow string to handle tabs?
 		'number of spaces to insert white space in JSON/JS files (min: 0, max: 10)',
-		DEFAULT_BEAUTIFY,
 		parseInt,
+		DEFAULT_BEAUTIFY,
 	)
 	.option(
 		'-c, --client <path>',
