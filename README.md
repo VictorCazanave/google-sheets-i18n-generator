@@ -27,12 +27,12 @@ Generate i18n JSON/JS files from a Google Sheets spreadsheet
      <summary>More details</summary>
 
      2.1. Enable the Google Sheets API for your project following [this documentation](https://support.google.com/googleapi/answer/6158841)
-     
+
      <img src="https://raw.githubusercontent.com/VictorCazanave/google-sheets-i18n-generator/master/doc/google-sheets-api.png" alt="Menu to Google Sheets API" height="150">
 
      <img src="https://raw.githubusercontent.com/VictorCazanave/google-sheets-i18n-generator/master/doc/enable-google-sheets-api.png" alt="Button to enable Google Sheets API" height="150">
 
-     2.2. Create OAuth ID credentials for your application 
+     2.2. Create OAuth ID credentials for your application
 
      <img src="https://raw.githubusercontent.com/VictorCazanave/google-sheets-i18n-generator/master/doc/create-credentials.png" alt="Menu to create credentials" height="200">
 
@@ -41,7 +41,7 @@ Generate i18n JSON/JS files from a Google Sheets spreadsheet
      <img src="https://raw.githubusercontent.com/VictorCazanave/google-sheets-i18n-generator/master/doc/download-client-secret.png" alt="Button to download client secret file" height="100">
 </details>
 
-3. Copy the ID of the spreadsheet (e.g. in this URL `https://docs.google.com/spreadsheets/d/1kjNb2-Tpn_1Pcd6pid22fBQlr8nd6oa1ltXwKNj1Gz11/edit#gid=0` the ID is `1kjNb2-Tpn_1Pcd6pid22fBQlr8nd6oa1ltXwKNj1Gz11`)
+3. Copy the ID of the spreadsheet (can be found in the URL `https://docs.google.com/spreadsheets/d/<spreadsheetId>/edit#gid=0`)
 
 4. Run the command: `gs-i18n <spreadsheetId>`
 
@@ -79,6 +79,6 @@ Options:
   -h, --help               output usage information
 ```
 
-## TODO
+## License
 
-* Improve code coverage
+MIT
