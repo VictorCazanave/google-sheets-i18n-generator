@@ -4,6 +4,7 @@
 [![Build Status](https://travis-ci.com/VictorCazanave/google-sheets-i18n-generator.svg?branch=master)](https://travis-ci.com/VictorCazanave/google-sheets-i18n-generator)
 [![codecov](https://codecov.io/gh/VictorCazanave/google-sheets-i18n-generator/branch/master/graph/badge.svg)](https://codecov.io/gh/VictorCazanave/google-sheets-i18n-generator)
 [![Dependency Status](https://david-dm.org/VictorCazanave/google-sheets-i18n-generator.svg)](https://david-dm.org/VictorCazanave/google-sheets-i18n-generator)
+[![GitHub](https://img.shields.io/github/license/VictorCazanave/google-sheets-i18n-generator?color=blue)](https://github.com/VictorCazanave/google-sheets-i18n-generator/blob/master/LICENSE)
 
 Generate i18n JSON/JS files from a Google Sheets spreadsheet
 
