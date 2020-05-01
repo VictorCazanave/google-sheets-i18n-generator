@@ -1,7 +1,6 @@
 # google-sheets-i18n-generator
 
-[![npm version](https://img.shields.io/npm/v/google-sheets-i18n-generator)](https://www.npmjs.com/package/
-google-sheets-i18n-generator)
+[![npm version](https://img.shields.io/npm/v/google-sheets-i18n-generator)](https://www.npmjs.com/package/google-sheets-i18n-generator)
 [![Build Status](https://travis-ci.com/VictorCazanave/google-sheets-i18n-generator.svg?branch=master)](https://travis-ci.com/VictorCazanave/google-sheets-i18n-generator)
 [![codecov](https://codecov.io/gh/VictorCazanave/google-sheets-i18n-generator/branch/master/graph/badge.svg)](https://codecov.io/gh/VictorCazanave/google-sheets-i18n-generator)
 [![Dependency Status](https://david-dm.org/VictorCazanave/google-sheets-i18n-generator.svg)](https://david-dm.org/VictorCazanave/google-sheets-i18n-generator)
