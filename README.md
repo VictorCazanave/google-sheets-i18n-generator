@@ -78,7 +78,3 @@ Options:
   -t, --token <path>       path of credentials file (default: "./credentials.json")
   -h, --help               output usage information
 ```
-
-## License
-
-MIT
